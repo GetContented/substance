@@ -18,9 +18,9 @@ On top of `Substance`, we build the `Fabricator` layer. This consists of the rem
 
 ## Productor
 
-This system is bootstrapped with the `Fabricator` system as discussed, but then has two main aspects: client-facing product, and the invention of itself as a product.
+This system is bootstrapped with the `Fabricator` system as discussed, but then has two main aspects of its production: client-facing product, and the invention of the next versions of itself as a product.
 
-Using this system, we can adjust itself. This includes changing its `Schema` and `Data` as well as the code that underlies all of this stuff by using the editors that are built in it. The versioning becomes quite important at this level as it lets us experiment with both data, schema and code changes while keeping the system working at different URLs. When a version of the system becomes stable enough to replace the main one, it's simply swapped in. We can decide to enable or disable various versions whenever. Having a `Migration` system that works with the versioning system to have semantic adjustments means that data or code adjustments are atomic and can be replayed as well as reverted.
+Using this system, we can adjust the system itself. This includes changing its `Schema` and `Data` as well as the code that underlies all of this stuff by using the editors that are built with and in it. The versioning becomes extremely important at this level as it lets us experiment with both data, schema and code changes while keeping the system working at different URLs. When a version of the system becomes stable enough to replace the main one, it's simply swapped in. We can decide to enable or disable various versions whenever. Having a `Migration` system that works with the versioning system to have semantic adjustments means that data or code adjustments are atomic and can be replayed as well as reverted.
 
 ## Languages
 
