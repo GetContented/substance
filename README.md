@@ -10,7 +10,7 @@ Postgres is used as a backing store for the model, which primarily uses the conc
 
 Each `Block` has a number of `BlockImport` records related to it, which is a reference to another `Block` in the system such that they get programmatically reified into Haskell `import` statements at the beginning of that `Block` before compilation takes place.
 
-Each `Block` also has access to one or more named `BlockData` items, which has data stored in `JSON` format, according to a `Schema`, which is a `Block` that simply has the code required to describe the types and `Aeson` code to describe how to interpret the `BlockData` for that particular `Schema`. (Note: `Schema` are not first-class `Substance` records; rather, they belong to the layer above, (or "within" if you prefer) `Substance`).
+Each `Block` also has access to one or more named `BlockData` items, which has data stored in `JSON` format, according to a `Schema`, which is a `Block` that simply has the code required to describe the types and `Aeson` code to describe how to interpret the `BlockData` for that particular `Schema`. (Note: `Schema` are not first-class `Substance` records; rather, they belong to the layer above `Substance`, or within if you prefer to think of it that way).
 
 ## Fabricator
 
