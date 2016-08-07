@@ -14,7 +14,7 @@ Each `Block` also has access to one or more named `BlockData` items, which has d
 
 ## Fabricator
 
-On top of `Substance`, we build the `Fabricator` layer. This consists of the remaining parts to this system. While `Substance` actually provides basic versions of all of these parts in order to bootstrap the providence, they're intended primarily as temproary measures to begin the ongoing development process of the `Productor` system, and should only be used to do that. `Fabricator` only really includes a way to work on building a code editor that can replace itself: including Information Architecture, Templates, Content and Designs enough to do this, at which point other editors can be built in such a way that they can feed back into the `Schema` `BlockData` and `Block` objects of `Fabricator` that makes up the `Productor` system.
+On top of `Substance`, we build the `Fabricator` layer. This consists of the remaining parts of the system. While `Substance` actually provides basic versions of all of these parts in order to bootstrap its upper layers, they're intended primarily as temproary measures to begin the ongoing development process of the `Productor` system, and should only be used to do that. `Fabricator` only really includes a way to work on building a code editor that can replace its use: including Information Architecture, Templates, Content and Designs enough to do this, at which point other editors can be built in such a way that they can feed back into the `Schema`, `BlockData` and `Block` objects of `Fabricator` that make up the `Productor` system.
 
 ## Productor
 
