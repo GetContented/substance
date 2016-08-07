@@ -24,6 +24,6 @@ Using this system, we can adjust the system itself. This includes changing its `
 
 ## Languages
 
-By using Haskell for `Substance`, as well as the underpinning language of the layers that it provides, we can share common libraries of code between layers. The `Fabricator` and `Productor` systems necessitate building other languages that are used via graphical user interfaces. These translate back to Haskell before the final compilation stage, which means the final code can run anywhere Haskell targets, including components that need to be run in the browser.
+By using Haskell for `Substance`, as well as the underpinning language of the layers that it provides, we can share common libraries of code between layers. The `Fabricator` and `Productor` systems necessitate building other languages that are used via graphical user interfaces. These translate back to Haskell as a kind of AST before the final compilation stage, which means the final code can run anywhere Haskell targets, including components that need to be run in the browser.
 
 Even though Haskell is a purely functional language, the end result of this approach is a system that is actually reasonably object-oriented in the sense that it bundles types, code, data and their adjustment code together into one unit.
