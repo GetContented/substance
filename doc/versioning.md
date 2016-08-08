@@ -1,4 +1,4 @@
-# Versioning
+# WIP: Versioning
 
 The system tracks changes over time by using immutable streams. Primarily, it tracks changes to `Block` (code) and `BlockData` objects by using two processes: diffing with changesets, and snapshotting. It tracks a stream of changes (with intent), along with a `Schema` that is itself versioned and tracks meta-changes, to *meaning* over time.
 
@@ -16,7 +16,7 @@ There is, finally, the `Schema` itself which is written in code and is an interf
 
 ## Changesets
 
-The primary method to use for recording changes is intent-driven changesets. The changes to `Block` and `BlockData` are relatively trivial to track becuase they simply describe the CRUD on pieces of the text. However, the changes to `Schema` are a bit more involved, as they generally also require adjustment code called a `Migration`. This type of code is written whenever an adjustment to the `Schema` happens and it describes how to change all the existing data forward and backwards between the current and previous versions of the `Schema` structure.
+The primary method to use for recording changes is intent-driven changesets. The changes to `Block` and `BlockData` are relatively trivial to track becuase they simply describe the CRUD on pieces of the text or structured data. However, the changes to `Schema` are a bit more involved, as they generally also require adjustment code called a `Migration`. This type of code is written whenever an adjustment to the `Schema` happens and it describes how to change all the existing data forward and backwards between the current and previous versions of the `Schema` structure.
 
 ## Snapshotting and Efficiency
 
