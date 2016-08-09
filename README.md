@@ -2,11 +2,11 @@
 
 Substance is a substrate for a new kind of content management system. It sits on the idea that data and code are syntactic aspects of a semantically inseparable whole.
 
-It provides a backend code compilation system, versioning system, database connectivity, initial data model, web and file serving functionality and the initial Basic Product-System Source Code Editor, with which the rest of the Product-System is built. See the diagram at `doc/architecture` for a visual overview of the full system.
+It provides web and file serving functionality, database connectivity, a base data model which includes a versioning system, a backend code compilation system, and connects to the upper (inner?) layers of the rest of the system with an initial Basic Product-System Source Code Editor. This is what is used to build the rest of the Product-System. See the diagram at `doc/architecture` for a visual overview of the full system.
 
 ## Database and Data Model
 
-Postgres is used as a backing store for the model, which primarily uses the concepts of `Block`, `BlockImport` and `BlockData`. A `Block` is a self-contained chunk of code similar to a module in many programming langauages. `Block` and `BlockData` are essentially stored as `text` in the database.
+Postgres is used as a database system to store the versioning system model and data. The model primarily uses the concepts of `Block`, `BlockImport` and `BlockData`. A `Block` is a self-contained chunk of code similar to a module in many programming langauages. `Block` and `BlockData` are essentially stored as `text` in the database.
 
 Each `Block` has a number of `BlockImport` records related to it, which is a reference to another `Block` in the system such that they get programmatically reified into Haskell `import` statements at the beginning of that `Block` before compilation takes place.
 
