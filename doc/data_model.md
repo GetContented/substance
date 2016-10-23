@@ -28,6 +28,8 @@ Snapshotting is how we reify our stream of captured modifications to a point.
 
 In fact `Block`, and `BlockData` are simply snapshot references: they mark identities that refer to particular `BlockSnapshot` and `BlockDataSnapshot` entities respectively, which are built out of the immutable streams of captured changes, which are effectively `Migration`s for `Block`, `Schema` and `BlockData`.
 
+A snapshot can store a cached version of the reified object.
+
 ## Languages
 
 Changes to `Block` data is in the Haskell language structure. Its syntax is captured in Haskell code in the [Language.Haskell.Exts.Syntax](https://hackage.haskell.org/package/haskell-src-exts-1.18.2/docs/Language-Haskell-Exts-Syntax.html#t:Exp) package, which we'll endeavour to implement a structure editor for while continuing to build a nice way to provide higher and higher possible capturing of intent.
@@ -37,3 +39,8 @@ Changing `BlockData` is similar, but easier because we will generally have a muc
 So, effectively, a "language" is captured in intent-captured versioned `Schema` for a `Block` and its `BlockData`, written in Haskell. That `Schema` then affords the `Block` and the `BlockData` to be freely and independently changed, while recording all intent in versions as activity. The `Block` is written in Haskell, but the `BlockData` is written in the `Schema` as the interface between the data and its code.
 
 Because the entire system is also written in Haskell, it's entirely possible that the system may end up being meta-recursive (that is, built from within itself) and somewhat self-hosting at some point in the future.
+
+## Data Formats
+
+Internally, in the database, we store `BlockData` snapshots, and migrations as `JSON`, using `Aeson` on the types in `Schema`, and we also store Haskell code in the same manner. This requires that we have `Aeson` instances for both Haskell and the migration language we represent changes to it in.
+
