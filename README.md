@@ -2,7 +2,9 @@
 
 The purpose of Substance is to allow its users to create and maintain the 'productions' they wish to create. These productions can be live websites, programs or documents: in theory, they could be anything at all on the data/code spectrum. In the process of allowing this, it also attempts to [capture the intent](doc/intent_capture.md) of its various users (of all kinds), and capture a history (as a version trail) of the changes that played out to form these 'productions'.
 
-Substance is, therefore, a substrate for a new kind of 'content' management system. We call pieces of this content 'productions' due to their potentially non-static quality. Substance sits on the idea that data and code are twin aspects of a semantically inseparable whole. This idea is that content is tied inexorably to its context. Its aim is to progress productions in accord with the intent of their creators, and their changing requirements. Its output is capable of being 'productions' that are anywhere on the spectrum between 'live' and static as is required. It caters to the fact that it's expected that these productions can and will evolve or change over time.
+Substance is, therefore, a substrate for a new kind of 'content' management system. We call pieces of this content 'productions' due to their potentially non-static quality. Substance sits on the idea that data and code are twin aspects of a semantically inseparable whole. This idea is that content is tied inexorably to its context. Also, that that context necessarily changes with time.
+
+Its main aim, then, is to progress productions in accord with the intent of their creators, and their changing requirements. Its output is capable of being 'productions' that are anywhere on the spectrum between 'live' and static as is required. It caters to the fact that it's expected that these productions can and will evolve or change over time.
 
 ## Services and Architecture
 
