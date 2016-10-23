@@ -6,7 +6,7 @@ Substance is, therefore, a substrate for a new kind of 'content' management syst
 
 ## Services and Architecture
 
-The services it provides to achieve these aims are: web and file serving functionality, database connectivity, a base [data model](doc/data_model.md), which includes a [versioning system](doc/versioning.md), a backend code compilation system, and connects to the upper (inner?) layers of the rest of the system with an initial Basic Product-System Source Code Editor. This is then used to build the rest of the Product-System. See the diagram at [`doc/architecture`](doc/architecture.jpg) for a visual overview of the full system.
+The services it provides to achieve these aims are: web and file serving functionality, database connectivity, a base [data model and database](doc/data_model.md), which includes a [versioning system](doc/versioning.md), a backend code compilation system, and connects to the upper (inner?) layers of the rest of the system with an initial Basic Product-System Source Code Editor. This is then used to build the rest of the Product-System. See the diagram at [`doc/architecture`](doc/architecture.jpg) for a visual overview of the full system.
 
 ## Fabricator
 
