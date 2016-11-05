@@ -8,3 +8,4 @@ In order to develop the system, we need to provide the following sets of things:
 - a `Schema` and `Blocks`
 - types that describe the shape of the `BlockData`
 - usage functions that allow creation, deletion, retrieval and updating of records
+- some form of basic intent capture
