@@ -24,23 +24,25 @@ The data model supports these things at a basic level so that we can provide mec
 
 ## Snapshotting and Versioning
 
-Snapshotting is how we reify our stream of captured modifications to a point.
+Snapshotting is how we reify our stream of captured modifications down to a single piece of data.
 
-In fact `Block`, and `BlockData` are simply snapshot references: they mark identities that refer to particular `BlockSnapshot` and `BlockDataSnapshot` entities respectively, which are built out of the immutable streams of captured changes, which are effectively `Migration`s for `Block`, `Schema` and `BlockData`.
+In fact `Block`, and `BlockData` are simply references to snapshots: they mark identities that refer to particular `BlockSnapshot` and `BlockDataSnapshot` entities respectively, which are built out of the immutable streams of captured intent to make changes, which are effectively `Migration`s for `Block`, `Schema` and `BlockData`.
 
-A snapshot can store a cached version of the reified object.
+A snapshot stores a cached version of the reified object, or identity.
 
 ## Languages
 
-Changes to `Block` data is in the Haskell language structure. Its syntax is captured in Haskell code in the [Language.Haskell.Exts.Syntax](https://hackage.haskell.org/package/haskell-src-exts-1.18.2/docs/Language-Haskell-Exts-Syntax.html#t:Exp) package, which we'll endeavour to implement a structure editor for while continuing to build a nice way to provide higher and higher possible capturing of intent.
+Changes to `Block` data is in the Haskell language structure. Its syntax is captured in Haskell code in the [Language.Haskell.Exts.Syntax](https://hackage.haskell.org/package/haskell-src-exts-1.18.2/docs/Language-Haskell-Exts-Syntax.html#t:Exp) package, which we'll endeavour to implement a structure editor for while continuing to build a nice way to provide higher and higher possible ways to capture of intent.
 
-Changing `BlockData` is similar, but easier because we will generally have a much simpler "language" and therefore structure, as recorded in the `Schema`. The editing operations will be recorded against specific `Schema` versions. The general idea is to move meaning out away from the code level as much as possible (by building simple languages out of DSL-like functions), and work with these POL-style (problem-oriented language) semantic level constructs which may eventually allow us to generate code anyway.
+Changing `BlockData` is similar, but easier because we will generally have a much simpler "language" that this takes place in, and therefore the structure will be simpler as well. This structure is recorded in the `Schema`. The editing operations will be recorded against specific `Schema` versions. The general idea is to move meaning out away from the code level as much as possible (by building simple languages out of DSL-like functions), and work with these POL-style (problem-oriented language) semantic level constructs which may eventually allow us to generate code anyway.
 
 So, effectively, a "language" is captured in intent-captured versioned `Schema` for a `Block` and its `BlockData`, written in Haskell. That `Schema` then affords the `Block` and the `BlockData` to be freely and independently changed, while recording all intent in versions as activity. The `Block` is written in Haskell, but the `BlockData` is written in the `Schema` as the interface between the data and its code.
 
-Because the entire system is also written in Haskell, it's entirely possible that the system may end up being meta-recursive (that is, built from within itself) and somewhat self-hosting at some point in the future.
+When migrating `Schema`, it is required to also write according migrations for `Block`, and `BlockData`. We use type checking here to ensure everything lines up before we can transition to this new version.
+
+Because the entire system is written in Haskell, it's entirely possible that the system may end up being meta-recursive (that is, built from within itself) and somewhat self-hosting at some point in the future.
 
 ## Data Formats
 
-Internally, in the database, we store `BlockData` snapshots, and migrations as `JSON`, using `Aeson` on the types in `Schema`, and we also store Haskell code in the same manner. This requires that we have `Aeson` instances for both Haskell and the migration language we represent changes to it in.
+Internally, in the database, we store snapshots of `BlockData` as `JSON`, using `Aeson` on the types in `Schema`, and we also store Haskell code in the same manner as its `AST` using `JSON`. This requires that we have `Aeson` instances for both Haskell and the migration language we represent changes to it in.
 
