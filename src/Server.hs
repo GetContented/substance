@@ -5,14 +5,14 @@ module Server
     ) where
 
 import Snap
-  ( Snap, writeBS, quickHttpServe
+  ( Snap, runSnaplet, quickHttpServe
   )
-import ServerState ( ServerState, heist )
+import ServerState ( ServerState, makeServerStateInit )
 
 startServer :: IO ()
-startServer = quickHttpServe site
-
-site :: Snap ()
-site =
-  writeBS "Server now serving basic text for breakfast!"
-
+startServer = do
+  let
+    environment = Nothing
+    initialServerState = makeServerStateInit
+  (_, snaplet, _) <- runSnaplet environment initialServerState
+  quickHttpServe snaplet
