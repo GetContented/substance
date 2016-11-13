@@ -8,11 +8,12 @@ import Snap
   ( Snap, runSnaplet, quickHttpServe
   )
 import ServerState ( ServerState, makeServerStateInit )
+import Routes ( routes )
 
 startServer :: IO ()
 startServer = do
   let
     environment = Nothing
-    initialServerState = makeServerStateInit
+    initialServerState = makeServerStateInit routes
   (_, snaplet, _) <- runSnaplet environment initialServerState
   quickHttpServe snaplet

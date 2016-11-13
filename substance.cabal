@@ -27,6 +27,7 @@ executable substance-exe
                      , substance
                      , snap
                      , lens
+                     , bytestring
   default-language:    Haskell2010
 
 test-suite substance-test

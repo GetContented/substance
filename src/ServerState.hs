@@ -3,13 +3,18 @@
 module ServerState
     ( ServerState
     , makeServerStateInit
+    , ServerStateHandler
     ) where
 
 import Snap ( addRoutes, writeBS )
 import Snap.Snaplet
-  ( Snaplet, subSnaplet, SnapletInit, makeSnaplet, nestSnaplet )
+  ( Snaplet, subSnaplet, SnapletInit, makeSnaplet, nestSnaplet, Handler )
 import Snap.Snaplet.Heist ( Heist, HasHeist(heistLens), heistInit )
 import Control.Lens ( makeLenses )
+import Data.ByteString.Char8 ( ByteString )
+
+type ServerStateHandler =
+  Handler ServerState ServerState ()
 
 data ServerState = ServerState {
   _heist :: Snaplet ( Heist ServerState )
@@ -19,8 +24,9 @@ makeLenses ''ServerState
 instance HasHeist ServerState where
   heistLens = subSnaplet heist
 
-makeServerStateInit :: SnapletInit ServerState ServerState
-makeServerStateInit =
+makeServerStateInit :: [(ByteString, ServerStateHandler)]
+                    -> SnapletInit ServerState ServerState
+makeServerStateInit routes =
   let
     name = "Substance"
     desc = "Substance System V1"
@@ -28,5 +34,5 @@ makeServerStateInit =
   in
     makeSnaplet name desc maybeFilepath $ do
       heistData <- nestSnaplet "heist" heist $ heistInit "templates"
-      addRoutes [ ("", writeBS "Welcome to Substance - Catchall route handler")]
+      addRoutes routes
       return $ ServerState { _heist = heistData }
