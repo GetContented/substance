@@ -1,6 +1,8 @@
 module Lib
-    ( someFunc
+    ( startServer
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import qualified Server
+
+startServer :: IO ()
+startServer = Server.startServer
