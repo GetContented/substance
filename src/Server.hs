@@ -13,6 +13,6 @@ startServer :: IO ()
 startServer = do
   let
     environment = Nothing
-    initialServerState = makeServerStateInit
+    initialServerState = makeServerStateInit []
   (_, snaplet, _) <- runSnaplet environment initialServerState
   quickHttpServe snaplet
