@@ -28,6 +28,15 @@ executable substance-exe
                      , snap
                      , lens
                      , bytestring
+                     , groundhog
+                     , groundhog-postgresql
+                     , groundhog-th
+                     , mtl
+                     , text
+                     , monad-logger
+                     , resource-pool
+                     , configurator
+                     , MonadCatchIO-transformers
   default-language:    Haskell2010
 
 test-suite substance-test

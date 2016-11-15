@@ -18,3 +18,4 @@ cabal.sandbox.config
 .stack-work/
 cabal.project.local
 log/*
+src/snaplets/groundhog-postgresql/devel.cfg
