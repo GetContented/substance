@@ -14,7 +14,8 @@ import Control.Lens ( makeLenses )
 import Data.ByteString.Char8 ( ByteString )
 import Control.Monad.State (get)
 import Snap.Snaplet.Groundhog.Postgresql
-  ( HasGroundhogPostgres, GroundhogPostgres, getGroundhogPostgresState )
+  ( HasGroundhogPostgres, GroundhogPostgres, getGroundhogPostgresState
+  , initGroundhogPostgres )
 import Data.Text
 
 type ServerStateHandler =
@@ -43,5 +44,9 @@ makeServerStateInit routes =
   in
     makeSnaplet name desc maybeFilepath $ do
       heistData <- nestSnaplet "heist" heist $ heistInit "templates"
+      dbData <- nestSnaplet "db" db initGroundhogPostgres
       addRoutes routes
-      return $ ServerState { _heist = heistData }
+      return $ ServerState {
+          _heist = heistData
+        , _db = dbData
+      }
