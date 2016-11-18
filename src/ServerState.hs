@@ -12,7 +12,7 @@ import Snap.Snaplet
 import Snap.Snaplet.Heist ( Heist, HasHeist(heistLens), heistInit )
 import Control.Lens ( makeLenses )
 import Data.ByteString.Char8 ( ByteString )
-import Control.Monad.State (get)
+import Control.Monad.State ( get )
 import Snap.Snaplet.Groundhog.Postgresql
   ( HasGroundhogPostgres, GroundhogPostgres, getGroundhogPostgresState
   , initGroundhogPostgres )
