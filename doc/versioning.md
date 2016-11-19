@@ -1,4 +1,4 @@
-# [WIP] Versioning
+# Versioning
 
 The system is concerned with capturing the communication of modifications to the items that its users are concerned with, over time. As such, specific intents to modify these items of interest (or identities), are not directly applied when enacted, but rather enacted after first being recording in an immutable historical stream.
 
@@ -26,9 +26,12 @@ The primary way of indicating a change between versions of `Block`, `Schema` or 
 
 ## Changesets
 
-The primary method to use for recording changes is intent-driven changesets: the above described language language records intent context by wrapping migrations in a `Changeset`, and somehow connects each to an `Intent`. Thus there is a separation between the marking of `Intent`, and the marking of implementation, the latter of which is what a `Changeset` represents. A `Changeset` wraps migrations: `data Changeset = Changeset [Changeset] | Migration`. That is, it provides an implementation that corresponds to a marking of intent. Thus, it will be represented by a `Block`.
+The primary method to use for recording changes is intent-driven changesets of migrations: the above described language records intent context by wrapping migrations in a `Changeset`, and somehow connects one or more of these to an `Intent`. Thus there is a separation between the marking of `Intent`, and the marking of implementation, the latter of which is what a `Changeset` represents. A `Changeset` wraps migrations: `data Changeset = Changeset [Changeset] | Migration`. That is, it provides an implementation that corresponds to a marking of intent. Thus, it will be represented by a `Block`.
 
 Interestingly, the beginning of this language seems to revolve around intent capture and a relaxed attitude toward correctness (that is, things may be better or worse at being a solution to things). Also useful to note is that using Pictures and Icons for filtering mechanisms might be the "restaurant menu solution" for getting rid of most keyboard typing and (along with the context) letting us easily filter possiblities.
 
 Migrations require back and forth migration code to be written so that data and structure can be moved backwards and forwards in time.
 
+## Databases
+
+As discussed in the [data model](data_model.md) document, the system can accommodate more than one database in the event that the lower levels of itself may need to be written, or two versions of the lower levels may need to exist simultaenously.
