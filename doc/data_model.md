@@ -46,3 +46,6 @@ Because the entire system is written in Haskell, it's entirely possible that the
 
 Internally, in the database, we store snapshots of `BlockData` as `JSON`, using `Aeson` on the types in `Schema`, and we also store Haskell code in the same manner as its `AST` using `JSON`. This requires that we have `Aeson` instances for both Haskell and the migration language we represent changes to it in.
 
+## Versioning and the Database
+
+While we will make every attempt at making the initial database versioning schema robust and as all-encompassing as possible, realising that it's not likely we can predict every requirement until they arise, we allow that the system can accommodate more than one database and switch between them in order to provide for the whole schema to be adjusted or replaced.
